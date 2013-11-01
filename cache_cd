@@ -1,0 +1,54 @@
+
+cache_cd_add_to_top() {
+   { echo "$1"; grep -Fvx -- "$1" ~/.cache_cd; } > ~/.cache_cd~
+   mv ~/.cache_cd~ ~/.cache_cd
+}
+
+cd() {
+   if [ -z "$1" ]
+   then
+      pushd "$HOME" &> /dev/null
+      return
+   fi
+   if [ -d "$1" ]
+   then
+      pushd "$1" &> /dev/null
+      cache_cd_add_to_top "$(pwd)"
+   elif [ "$1" -gt 0 ] &> /dev/null
+   then
+      line=$(sed -n "$1p" ~/.cache_cd.options)
+      pushd "$line" &> /dev/null
+      cache_cd_add_to_top "$line"
+   else
+      out=$(grep -F -- "$1" ~/.cache_cd)
+      if [ "$out" ]
+      then
+         echo "$out" | cat -n
+         if [ "$BASH" ]
+         then
+            IFS=$'\n' lines=( $out )
+	    first=${lines[0]}
+         elif [ "$ZSH_VERSION" ]
+         then
+            lines=(${(z)out})
+            first=${lines[1]}
+         fi
+         if [ "${#lines}" -gt 1 ] &> /dev/null
+         then
+            echo "$out" > ~/.cache_cd.options
+         fi
+         pushd "$first" &> /dev/null
+         if [ $? = 1 ]
+         then
+            echo "Directory $first no longer exists. Retrying..."
+            grep -Fvx -- "$first" ~/.cache_cd > ~/.cache_cd~
+            mv ~/.cache_cd~ ~/.cache_cd
+            cd "$1"
+         else
+            cache_cd_add_to_top "$first"
+         fi
+      else
+         echo "cd: $1 - directory not found" 1>&2
+      fi
+   fi
+}
