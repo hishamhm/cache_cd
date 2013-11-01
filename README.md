@@ -10,26 +10,36 @@ Copy the script somewhere and call it from your shell initialization script
 with the "source" command. For example, copying it in ~/bin/cache_cd, copy
 this to your ~/.bashrc or ~/.zshrc:
 
+```
    source ~/bin/cache_cd
+```
 
 And restart your shell: close and reopen your terminal or simply type
 
+```
    exec $SHELL
+```
 
 Usage
 -----
 
+```
    cd
    cd <directory>
-   
+```
+
 Changes to your home directory or to your given directory as usual.
 
+```
    cd <substring>
+```
 
 Tries to find substring in the list of directories you used previously.
 Presents a numbered list of matches and changes to the first.
 
+```
    cd <number>
+```
 
 Changes to the numbered directory of the previously presented list.
 This directory is also moved to the top of the cache, so it comes first
@@ -74,5 +84,5 @@ hisham@parser ~/luarocks/src]
 Compatibility
 -------------
 
-Tested with Bash 4.0.35 and zsh 4.3.10
-
+Tested with Bash 4.0.35 and zsh 4.3.10 on Linux. Should work in other places
+and versions too.
