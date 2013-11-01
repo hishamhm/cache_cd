@@ -53,30 +53,20 @@ Example
 -------
 
 ```shell
-hisham@parser ~]cd src
-        1/Users/hisham/luarocks/src
-        2/Users/hisham/luarocks/src/luarocks
-        3/Users/hisham/luarocks/src/luarocks/fs/win32
-        4/Users/hisham/luarocks/luarocks-2.1.0/src/luarocks
-        5/Users/hisham/luarocks/luarocks-2.1.0/src
-hisham@parser ~/luarocks/src/luarocks]e ~/bin/cache_cd  
-hisham@parser ~/luarocks/src/luarocks]exit
-hisham@parser ~]bash
-hisham@parser ~]. ~/bin/cache_cd 
-hisham@parser ~]cd src
-        1/Users/hisham/luarocks/src/luarocks
-        2/Users/hisham/luarocks/src
-        3/Users/hisham/luarocks/src/luarocks/fs/win32
-        4/Users/hisham/luarocks/luarocks-2.1.0/src/luarocks
-        5/Users/hisham/luarocks/luarocks-2.1.0/src
-hisham@parser ~/luarocks/src/luarocks]cd 2
-hisham@parser ~/luarocks/src]cd
-hisham@parser ~]cd src
-        1/Users/hisham/luarocks/src
-        2/Users/hisham/luarocks/src/luarocks
-        3/Users/hisham/luarocks/src/luarocks/fs/win32
-        4/Users/hisham/luarocks/luarocks-2.1.0/src/luarocks
-        5/Users/hisham/luarocks/luarocks-2.1.0/src
+hisham@parser ~] cd src
+        1 /Users/hisham/luarocks/src/luarocks
+        2 /Users/hisham/luarocks/src
+        3 /Users/hisham/luarocks/src/luarocks/fs/win32
+        4 /Users/hisham/luarocks/luarocks-2.1.0/src/luarocks
+        5 /Users/hisham/luarocks/luarocks-2.1.0/src
+hisham@parser ~/luarocks/src/luarocks] cd 2
+hisham@parser ~/luarocks/src] cd
+hisham@parser ~] cd src
+        1 /Users/hisham/luarocks/src
+        2 /Users/hisham/luarocks/src/luarocks
+        3 /Users/hisham/luarocks/src/luarocks/fs/win32
+        4 /Users/hisham/luarocks/luarocks-2.1.0/src/luarocks
+        5 /Users/hisham/luarocks/luarocks-2.1.0/src
 hisham@parser ~/luarocks/src]
 ```
 
