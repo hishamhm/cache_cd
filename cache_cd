@@ -1,6 +1,6 @@
 
 cache_cd_add_to_top() {
-   { echo "$1"; grep -Fvx -- "$1" ~/.cache_cd; } > ~/.cache_cd~
+   { echo "$1"; grep -Fvx -- "$1" ~/.cache_cd 2>/dev/null; } > ~/.cache_cd~
    mv ~/.cache_cd~ ~/.cache_cd
 }
 
@@ -20,7 +20,7 @@ cd() {
       pushd "$line" &> /dev/null
       cache_cd_add_to_top "$line"
    else
-      out=$(grep -F -- "$1" ~/.cache_cd)
+      out=$(grep -F -- "$1" ~/.cache_cd 2>/dev/null)
       if [ "$out" ]
       then
          echo "$out" | cat -n
@@ -41,7 +41,7 @@ cd() {
          if [ $? = 1 ]
          then
             echo "Directory $first no longer exists. Retrying..."
-            grep -Fvx -- "$first" ~/.cache_cd > ~/.cache_cd~
+            grep -Fvx -- "$first" ~/.cache_cd > ~/.cache_cd~ 2>/dev/null
             mv ~/.cache_cd~ ~/.cache_cd
             cd "$1"
          else
