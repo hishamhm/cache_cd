@@ -7,17 +7,17 @@ cache_cd_add_to_top() {
 cd() {
    if [ -z "$1" ]
    then
-      pushd "$HOME" &> /dev/null
+      pushd "$HOME" > /dev/null
       return
    fi
    if [ -d "$1" ]
    then
-      pushd "$1" &> /dev/null
+      pushd "$1" > /dev/null
       cache_cd_add_to_top "$(pwd)"
    elif [ "$1" -gt 0 ] &> /dev/null
    then
       line=$(sed -n "$1p" ~/.cache_cd.options)
-      pushd "$line" &> /dev/null
+      pushd "$line" > /dev/null
       cache_cd_add_to_top "$line"
    else
       out=$(grep -F -- "$1" ~/.cache_cd 2>/dev/null)
