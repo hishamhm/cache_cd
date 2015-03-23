@@ -30,7 +30,7 @@ cd() {
 	    first=${lines[0]}
          elif [ "$ZSH_VERSION" ]
          then
-            lines=(${(z)out})
+            lines=( "${(f)$(echo "$out")}" )
             first=${lines[1]}
          fi
          if [ "${#lines}" -gt 1 ] &> /dev/null
